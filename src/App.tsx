@@ -19,7 +19,7 @@ const App = () => {
 	const [history, sethistory] = useState<History>([INITIAL_SQUARES]);
 	const [currentMove, setcurrentMove] = useState<number>(history.length - 1);
 
-	function checkDraw(squares: Square[]): boolean {
+	function checkDraw(squares: Squares): boolean {
 		return !squares.includes(null) && winner === INITIAL_WINNER;
 	}
 
