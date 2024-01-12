@@ -1,4 +1,16 @@
-function calculateWinner(squares: string[]) {
+import { Squares } from "../App";
+
+export type Winner = {
+    name: string | null,
+    winningLine: number[],
+}
+
+export const INITIAL_WINNER: Winner = {
+    name: null,
+    winningLine: [],
+}
+
+function calculateWinner(squares: Squares): Winner {
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -12,10 +24,13 @@ function calculateWinner(squares: string[]) {
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            return {
+                name: squares[a],
+                winningLine: lines[i],
+            };
         }
     }
-    return null;
+    return INITIAL_WINNER;
 }
 
 export default calculateWinner;
